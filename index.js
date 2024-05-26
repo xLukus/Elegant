@@ -19,7 +19,7 @@ const ExpressError = require("./utils/expressError.js");
 const stripe = require("stripe")(process.env.SECRET_KEY);
 const catchAsync = require("./utils/catchAsync.js");
 const reviewRoutes = require("./routes/review.js");
-
+const Produkt = require("../models/produkt.js");
 app.engine("ejs", engine);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -120,7 +120,10 @@ app.post(
     res.redirect(session.url);
   })
 );
-
+app.get("https://elegant-yod8.onrender.com", async (req, res) => {
+  let produkts = await Produkt.find();
+  res.render("home", { produkts });
+});
 app.use("/elegant", userRouter);
 app.use("/elegant", elegant);
 app.use("/elegant", reviewRoutes);
