@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <%- include('../partials/navbar') %>
+        <%- include('../partials/flash') %>
+            <div style="width: 100%; height: 600px; display: flex;
+        justify-content: center;
+        align-items: center;">
+                <div style="width: 70%; height: 100%; display: flex;
+            justify-content: center;
+            align-items: center;">
+                    <img src="/pictures/shop/9c5f20ae-fd8c-46ac-86c3-ec7c1b71c682.png" alt=""
+                        style="width: 100%; height: 100%;">
+                    <div class="text">
+                        <h1>Shop Page</h1>
+                        <p>Let's design the place you always imagined.</p>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%; display: flex;
+        justify-content: center;
+        align-items: center; margin-top: 70px; flex-direction: column;">
+                <div style="width: 70%;  display: flex; height: auto;
+        ">
+                    <div class=" d20" style="width: 20%; height: 500px; margin-right: 100px;">
+                        <h2 style="font-size: 30px;"><img src="/pictures/shop/filtericon.png" alt="">Filter</h2>
+                        <h3>Categories</h3>
+                        <ul style="font-size:20px ;" class="opcii">
+                            <div>
+                                <li>All Rooms</li><input type="radio" name="category" value="All Rooms" id="All Rooms"
+                                    checked="checked">
+                            </div>
+                            <div>
+                                <li>Living Room</li><input type="radio" name="category" value="Living Room"
+                                    id="Living Room">
+                            </div>
+                            <div>
+                                <li>Bedroom</li><input type="radio" name="category" value="Bedroom" id="Bedroom">
+                            </div>
+                            <div>
+                                <li>Kitchen</li><input type="radio" name="category" value="Kitchen" id="Kitchen">
+                            </div>
+                            <div>
+                                <li>Bathroom</li><input type="radio" name="category" value="Bathroom" id="Bathroom">
+                            </div>
+                            <div>
+                                <li>Dining Room</li><input type="radio" name="category" value="Dining" id="Dining">
+                            </div>
+                            <div>
+                                <li>Outdoor</li><input type="radio" name="category" value="Outdoor" id="Outdoor">
+                            </div>
+                        </ul>
+                        <h3>Price</h3>
+                        <div class="ceni">
+                            <div>
+                                <label for="all">All</label>
+                                <input type="radio" name="price" value="all" id="all" checked="checked">
+                            </div>
+                            <div>
+                                <label for="0">$0.00-99.99</label>
+                                <input type="radio" name="price" value="0" id="0">
+                            </div>
+                            <div>
+                                <label for="100">$100-199.99 </label>
+                                <input type="radio" name="price" value="100" id="100">
+                            </div>
+                            <div>
+                                <label for="200">$200-399.99 </label>
+                                <input type="radio" name="price" value="200" id="200">
+                            </div>
+
+                            <div>
+                                <label for="400">$400+ </label>
+                                <input type="radio" name="price" value="400" id="400">
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="d50" style="width: 100%;height: 1890px; overflow: hidden; margin-bottom: 300px; ">
+                        <h1 style="font-size: 30px;margin-bottom: 20px;" class="display">
+
+                        </h1>
+                        <div style="display: flex;
+                    justify-content: space-between;
+                    align-items: center; flex-wrap: wrap;">
+
+                            <% for (let product of products) {%>
+                                <div class="card mb-3" style="width: 300px; height: 380px; display: flex;
+                             justify-content: center;
+                                align-items: center;flex-direction: column; margin: 40px 0px;">
+                                    <img src="<%= product.image %>" class="card-img-top" alt="... "
+                                        style="width: 300px; height: 300px;">
+                                    <div class="card-body" style="display: flex; justify-content: start;flex-direction: column;
+                                          align-items: start; width: 100%; height: 50px;">
+                                        <h2 class="card-title">
+                                            <%= product.name %>
+                                        </h2>
+                                        <input type="hidden" value="<%=product.category %>" class="cat">
+                                        <input type="hidden" value="<%=product.price %>" class="priceee">
+                                        <p class="card-text" style="font-size: 30px;">
+                                            $ <%= product.price %>
+                                        </p>
+                                        <a href="/elegant/<%= product._id %>">
+                                            <button class="add" style="width: 50px; height: 30px;">View</button></a>
+                                    </div>
+                                </div>
+
+                                <% } %>
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+                <div
+                    style="width: 100%; display: flex;justify-content: center;align-items: center;margin-bottom: 100px;">
+                    <button class="add show">Show
+                        more</button>
+                </div>
+            </div>
+
+            <%- include('../partials/footer') %>
+</body>
+
+</html>
+
+
+<script>
+    const sire = document.querySelector(".d50");
+    const kopce = document.querySelector(".show");
+
+    let count = 0;
+
+    // Function to update height
+    function updateHeight() {
+        const category = document.querySelector('.cat').value;
+        const selectedCategory = document.querySelector('input[name="category"]:checked').value;
+        const categoryMatch = selectedCategory === 'All Rooms' || category === selectedCategory;
+
+        if (categoryMatch) {
+            if (count < 7) {
+                count++;
+                sire.style.height = (parseInt(sire.style.height) + 925) + "px";
+            }
+            kopce.style.display = "block"; // Display the button
+        } else {
+            kopce.style.display = "none"; // Hide the button
+            sire.style.height = "1700px";
+        }
+    }
+
+    // Listen for change event on radio buttons
+    document.querySelectorAll('input[name="category"]').forEach(function (radioButton) {
+        radioButton.addEventListener("change", function () {
+            count = 0; // Reset count to 0 when category changes
+            updateHeight(); // Update height when category changes
+        });
+    });
+
+    // Listen for click event on button
+    kopce.addEventListener("click", function () {
+        updateHeight(); // Update height when button is clicked
+    });
+
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const products = document.querySelectorAll('.card');
+        const categoryRadios = document.querySelectorAll('input[name="category"]');
+        const priceRadios = document.querySelectorAll('input[name="price"]');
+        const display = document.querySelector(".display")
+        const none = document.querySelector(".none")
+        function filterProducts() {
+            const selectedCategory = document.querySelector('input[name="category"]:checked').value;
+            const selectedPrice = document.querySelector('input[name="price"]:checked').value;
+            display.innerHTML = selectedCategory
+            products.forEach(product => {
+                const category = product.querySelector('.cat').value;
+                const priceElement = product.querySelector('.priceee').value;
+                const categoryMatch = selectedCategory === 'All Rooms' || category === selectedCategory
+                let priceMatch = false;
+                switch (selectedPrice) {
+                    case 'all':
+                        priceMatch = true;
+                        break;
+                    case '0':
+                        priceMatch = priceElement < 100;
+                        break;
+                    case '100':
+                        priceMatch = priceElement >= 100 && priceElement < 200;
+                        break;
+                    case '200':
+                        priceMatch = priceElement >= 200 && priceElement < 400;
+                        break;
+                    case '400':
+                        priceMatch = priceElement >= 400 && priceElement < 100000;
+                        break;
+                }
+
+                if (categoryMatch && priceMatch) {
+                    product.style.display = 'flex';
+
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+        categoryRadios.forEach(radio => {
+            radio.addEventListener('change', filterProducts);
+        });
+        priceRadios.forEach(radio => {
+            radio.addEventListener('change', filterProducts);
+        });
+        filterProducts();
+    });
+
+</script>
+<style>
+    .add {
+        width: 120px;
+        height: 40px;
+        border: 1px solid black;
+        background-color: white;
+        font-size: 15px;
+        color: black;
+        border-radius: 15px;
+    }
+
+
+
+    .add:hover {
+        background-color: black;
+        color: white;
+        transition: 0.5s;
+        cursor: pointer;
+    }
+
+    .text {
+        position: absolute;
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 25px;
+        margin-top: 20px;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: " Poppins", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .text h1 {
+        font-size: 80px;
+    }
+
+    .text p {
+        font-size: 30px;
+    }
+
+    .d20 ul {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        flex-direction: column;
+    }
+
+
+    .opcii div {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+    }
+
+
+
+    .opcii li {
+        margin: 0;
+        margin-top: 10px;
+        display: flex;
+
+    }
+
+    .ceni {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        flex-direction: column;
+        font-size: 20px;
+    }
+
+    .ceni div {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    input[type="radio"] {
+        box-sizing:
+            border-box;
+        width: 20px;
+        height: 20px;
+        margin: 6px;
+        padding: 0;
+        border: 2px solid black;
+        border-radius:
+            0;
+        appearance: none;
+        background-color: transparent;
+        outline: none;
+    }
+
+    input[type="radio"
+
+    ]:not(:disabled):checked {
+        border-color: black;
+        background-color: black;
+        background-clip: content-box;
+    }
+</style>

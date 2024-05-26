@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant</title>
+</head>
+
+<body>
+    <%- include('../partials/navbar') %>
+        <%for(let product of products) { %>
+            <ul>
+                <div class="d-flex justify-content-center align-items-center w-100">
+                    <div class="card col-lg-8">
+                        <div class="row">
+                            <div class="col-lg-4 ">
+                                <img src="<%= product.image %>" alt="" class="img-fluid col-lg-20">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%= product.name %>
+                                    </h5>
+                                    <p class="card-text">
+                                        <%= product.price %>
+                                    </p>
+                                    <p class="card-text">
+                                        <%= product.description %>
+                                    </p>
+                                    <p class="card-text">
+                                        <%= product.measurments %>
+                                    </p>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </ul>
+            </div>
+            <% } %>
+</body>
+
+</html>

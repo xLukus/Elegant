@@ -1,0 +1,55 @@
+<% if (success && success.length){ %>
+    <div style="position: fixed; width: 200px; display: flex; justify-content: center; align-items: center; height: 150px; top: 100px; box-shadow: 0px 0px 14px 0px rgba(93,207,83,1); z-index: 100; padding: 10px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);"
+        id="testing">
+        <div>
+            <h1 style="border-bottom: 1px solid green; width: 80%;">Success</h1>
+            <p>
+                <%=success%>
+            </p>
+        </div>
+        <div style="height: 80%; display: flex; justify-content: start; align-items: start;">
+            <img src="/pictures/images.webp" alt="" style="width: 20px; height: 20px;" class="btnDisable">
+        </div>
+    </div>
+    <%}%>
+        <% if (error && error.length){ %>
+            <div style="position: fixed; width: 200px; display: flex; justify-content: center; align-items: center; height: 150px; top: 100px; box-shadow: 0px 0px 14px 0px red; z-index: 100; padding: 10px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);"
+                id="testing2">
+                <div>
+                    <h1 style="border-bottom: 1px solid red; width: 80%;">Error</h1>
+                    <p>
+                        <%=error%>
+                    </p>
+                </div>
+                <div style="height: 80%; display: flex; justify-content: start; align-items: start;">
+                    <img src="/pictures/images.webp" alt="" style="width: 20px; height: 20px;" class="btnDisable2">
+                </div>
+            </div>
+            <%}%>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        let hideFlash = document.querySelector("#testing");
+                        let btn = document.querySelector(".btnDisable");
+                        if (btn) {
+                            btn.addEventListener("click", function () {
+                                hideFlash.style.transform = "translateX(-100%)"; // Slide to the left
+
+                            });
+                            setTimeout(function () {
+                                hideFlash.style.display = "none";
+                            }, 4000); // Hide after animation is complete (0.5s)
+                        }
+
+                        let hideFlash2 = document.querySelector("#testing2");
+                        let btn2 = document.querySelector(".btnDisable2");
+                        if (btn2) {
+                            btn2.addEventListener("click", function () {
+                                hideFlash2.style.transform = "translateX(-100%)"; // Slide to the left
+
+                            });
+                            setTimeout(function () {
+                                hideFlash2.style.display = "none";
+                            }, 4000); // Hide after animation is complete (0.5s)
+                        }
+                    });
+                </script>

@@ -1,0 +1,63 @@
+<%- include('../partials/navbar') %>
+    <div style="width: 100%; height: 800px; display: flex;
+justify-content: center;
+align-items: center;">
+        <div
+            style="width: 70%; height: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+            <form action="/elegant" method="POST"
+                style="width: 70%; height: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                <input type="hidden" name="id">
+                <label for="Name">Name</label>
+                <input type="text" name="name" id="name" required>
+                <label for="Price">Price</label>
+                <input type="number" name="price" id="price" required pattern='[0-9]+(\\.[0-9][0-9]?)?'>
+                <label for="description">Description</label>
+                <textarea name="description" id="description" rows="5" cols="60" required></textarea>
+                <label for="measurments">Measurments</label>
+                <input type="text" name="measurments" id="measurments" required>
+                <input type="text" name="image" required>
+                <div style="width: 400px; display: flex; justify-content: center; align-items: center;">
+
+                    <label for="Living Room"> Living Room</label>
+                    <input type="radio" name="category" id="Living Room" value="Living Room" class="krug">
+                </div>
+                <div style="width: 400px; display: flex; justify-content: center; align-items: center;">
+                    <label for="Bedroom"> Bedroom</label>
+                    <input type="radio" name="category" id="Bedroom" value="Bedroom" class="krug">
+                </div>
+                <div style="width: 400px; display: flex; justify-content: center; align-items: center;">
+                    <label for="Bathroom">Bathroom</label>
+                    <input type="radio" name="category" id="Bathroom" value="Bathroom" class="krug">
+                </div>
+                <div style="width: 400px; display: flex; justify-content: center; align-items: center;">
+                    <label for="Kitchen">Kitchen</label>
+                    <input type="radio" name="category" id="Kitchen" value="Kitchen" class="krug">
+                </div>
+                <div style="width: 400px; display: flex; justify-content: center; align-items: center;">
+                    <label for="Dining">Dining</label>
+
+                    <input type="radio" name="category" id="Dining" value="Dining" class="krug">
+                </div>
+                <div style="width: 400px; display: flex; justify-content: center; align-items: center;">
+                    <label for="Outdoor"> Outdoor</label>
+                    <input type="radio" name="category" id="Outdoor" value="Outdoor" class="krug">
+                </div>
+
+                <button>Update</button>
+            </form>
+
+        </div>
+    </div>
+    <style>
+        input {
+            width: 400px;
+            margin: 10px;
+            height: 30px;
+        }
+
+        .krug {
+            width: 30px;
+            margin: 10px;
+            height: 20px;
+        }
+    </style>

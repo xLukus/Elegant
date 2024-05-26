@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant</title>
+</head>
+
+<body>
+    <%- include('../partials/navbar') %>
+        <%- include('../partials/flash') %>
+            <div style="width: 100%; height: 100px; display: flex;
+        justify-content: center;
+        align-items: center; margin-top: 50px;">
+                <div style="width: 70%; height: 100%; display: flex;
+            justify-content: center;
+            align-items: center; margin: 20px;">
+                    <h2 style="font-size: 60px;">Cart</h2>
+                </div>
+            </div>
+            <div style="width: 100%; height: 100px; display: flex;
+        justify-content: center;
+        align-items: center;">
+                <div style="width: 70%; height: 100%; display: flex;
+            justify-content: center;
+            align-items: center; margin: 20px;">
+                    <div>
+                        <img src="/pictures/cart/prv/31ad5df6-2119-4d03-bda1-12d7c327b4c9.png" alt="">
+                        <img src="/pictures/cart/prv/13ee2743-01f8-48f8-b77c-90f1444094b7.png" alt="">
+                        <img src="/pictures/cart/prv/4f2e1df5-f6c5-4f6a-be38-d84374670989.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div style="width: 67%; display: flex;
+        justify-content: center ;
+        align-items: center; margin-top: 30px; font-size: 30px;">
+                <div style="width: 80%; display: flex;
+            align-items: center; margin: 20px;  flex-direction: column; margin-left: 10px;">
+                    <div style="width: 100%;">
+                        <ul style="width: 100%;display: flex; justify-content: space-evenly;">
+                            <li style="width: 100%;">
+                                Name
+                            </li>
+                            <li style="width: 100%;">
+                                Qty
+                            </li>
+                            <li style="width: 100%;">
+                                Price
+                            </li>
+                            <li style="width: 100%;">
+                                Sub
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%; display: flex;
+        justify-content: center ;
+        align-items: center; margin-top: 30px; ">
+                <div style="width: 70%; display: flex;
+            justify-content: center;
+            align-items: center; margin: 20px;  flex-direction: column;">
+                    <% if(currentUser){ %>
+                        <% for(product of currentUser.produkts ){ %>
+
+                            <div style="width: 80%; height: 100%;  border-bottom: 1px solid black; margin-top: 20px; ">
+                                <div>
+                                    <div class="block" style="display: flex;">
+                                        <div style="width: 100%; display: flex;">
+                                            <img src="<%= product.image %>" alt="" width="150px" height="150px">
+                                            <ul style="width: 80%;display: flex; justify-content: space-evenly;">
+                                                <li style="width: 100%; margin: 0;">
+                                                    <%=product.name %>
+                                                </li>
+                                                <li style="width: 100%; margin: 0;">
+                                                    <%=product.val %>
+                                                </li>
+                                                <li style="width: 100%; margin: 0;">
+                                                    $ <%=product.price %>
+                                                </li>
+                                                <li style="width: 100%; margin: 0;">
+                                                    <% let sub=product.val * product.price%>
+                                                        $ <%=sub %>
+                                                </li>
+                                            </ul>
+
+
+                                        </div>
+                                        <form action="/elegant/deleteFromCart?_method=DELETE"
+                                            style=" display: flex; align-items: center;" method="POST">
+                                            <input type="hidden" value="<%= product.id %>" name="id">
+                                            <button style="border: none;">
+                                                <img src="/pictures/navbar/cancel.png" alt="" height="15px" width="15px"
+                                                    class="cancel">
+                                            </button>
+
+                                        </form>
+
+                                    </div>
+
+
+
+                                </div>
+
+                            </div>
+
+
+                            <% } %>
+                                <% } %>
+                </div>
+                <div style="width: 30%; height: 400px;   ">
+                    <div
+                        style="height: 100px; width: 80%; display: flex; justify-content: space-between; border: 2px solid black; flex-direction: column; align-items: center;">
+                        <div style="width: 50%; text-align: center;">
+                            <h1>Total</h1>
+                            <% if(currentUser){ %>
+                                <% let total=0 %>
+                                    <% for(product of currentUser.produkts ){ %>
+                                        <% total +=product.price * product.val; %>
+                                            <% } %>
+                                                <h2>
+                                                    $ <%= total %>
+                                                </h2>
+                                                <% } %>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;width: 50%;">
+                            <form action="/checkout" method="POST">
+                                <input type="hidden" value="<%= currentUser.produkts  %>">
+                                <button class=" add">Checkout</button>
+                            </form>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            </div>
+            </div>
+            <%- include('../partials/footer') %>
+</body>
+
+</html>
+<style>
+    .add {
+        width: 100%;
+        height: 40px;
+        border: 1px solid black;
+        background-color: white;
+        font-size: 15px;
+        color: black;
+        border-radius: 15px;
+    }
+
+    .add:hover {
+        color: white;
+        background-color: black;
+        cursor: pointer;
+    }
+</style>
