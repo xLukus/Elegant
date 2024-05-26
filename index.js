@@ -126,9 +126,7 @@ app.use("/elegant", userRouter);
 app.use("/elegant", elegant);
 app.use("/elegant", reviewRoutes);
 
-app.all("*", (req, res, next) => {
-  next(new ExpressError("Page Not Found", 404));
-});
+
 
 app.listen(process.env.PORT, () => {
   console.log("serving 3000");
