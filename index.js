@@ -121,10 +121,7 @@ app.post(
     res.redirect(session.url);
   })
 );
-app.get("https://elegant-yod8.onrender.com", async (req, res) => {
-  let produkts = await Produkt.find();
-  res.render("home", { produkts });
-});
+
 app.use("/elegant", userRouter);
 app.use("/elegant", elegant);
 app.use("/elegant", reviewRoutes);
