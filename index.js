@@ -20,6 +20,30 @@ const stripe = require("stripe")(process.env.SECRET_KEY);
 const catchAsync = require("./utils/catchAsync.js");
 const reviewRoutes = require("./routes/review.js");
 const Produkt = require("./models/produkt.js");
+const { MongoClient, ServerApiVersion } = require("mongodb");
+
+const client = new MongoClient(dbUrl, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
+});
+
+async function run() {
+  try {
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log(
+      "Pinged your deployment. You successfully connected to MongoDB!"
+    );
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
 
 app.engine("ejs", engine);
 app.set("view engine", "ejs");
@@ -29,11 +53,11 @@ app.use(methodOveride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 mongoose.connect(dbUrl);
 
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", () => {
-  console.log("Database opened");
-});
+// const db = mongoose.connection;
+// db.on("error", console.error.bind(console, "connection error:"));
+// db.once("open", () => {
+//   console.log("Database opened");
+// });
 
 const sessionConfig = {
   name: "blah",
@@ -121,10 +145,7 @@ app.post(
     res.redirect(session.url);
   })
 );
-app.get("https://elegant-yod8.onrender.com", async (req, res) => {
-  let produkts = await Produkt.find();
-  res.render("home", { produkts });
-});
+
 app.use("/elegant", userRouter);
 app.use("/elegant", elegant);
 app.use("/elegant", reviewRoutes);
