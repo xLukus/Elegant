@@ -20,48 +20,21 @@ const stripe = require("stripe")(process.env.SECRET_KEY);
 const catchAsync = require("./utils/catchAsync.js");
 const reviewRoutes = require("./routes/review.js");
 const Produkt = require("./models/produkt.js");
-const { MongoClient, ServerApiVersion } = require("mongodb");
 
-const client = new MongoClient(dbUrl, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
+const store = new MongoStore({
+  mongoUrl: dbUrl,
+  touchAfter: 24 * 60 * 60,
+  crypto: {
+    secret: "thisshouldbeabettersecret!",
   },
 });
-
-async function run() {
-  try {
-    await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log(
-      "Pinged your deployment. You successfully connected to MongoDB!"
-    );
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
-}
-run().catch(console.dir);
-
-app.engine("ejs", engine);
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
-app.use(express.urlencoded({ extended: true }));
-app.use(methodOveride("_method"));
-app.use(express.static(path.join(__dirname, "public")));
-mongoose.connect(dbUrl);
-
-// const db = mongoose.connection;
-// db.on("error", console.error.bind(console, "connection error:"));
-// db.once("open", () => {
-//   console.log("Database opened");
-// });
-
+store.on("error", function (e) {
+  console.log("SESSIONSTORE ERROR", e);
+});
 const sessionConfig = {
+  store,
   name: "blah",
-  secret: process.env.SECRET,
+  secret: "this",
   // secure: true,
   resave: false,
   saveUninitialized: true,
@@ -71,6 +44,19 @@ const sessionConfig = {
     maxAge: 1000 * 60 * 60 * 24 * 7,
   },
 };
+app.engine("ejs", engine);
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOveride("_method"));
+app.use(express.static(path.join(__dirname, "public")));
+mongoose.connect(dbUrl);
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+  console.log("Database opened");
+});
 
 app.use(session(sessionConfig));
 app.use(flash());
@@ -149,7 +135,6 @@ app.post(
 app.use("/elegant", userRouter);
 app.use("/elegant", elegant);
 app.use("/elegant", reviewRoutes);
-
 
 app.listen(process.env.PORT, () => {
   console.log("serving 3000");
