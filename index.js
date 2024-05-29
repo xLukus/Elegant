@@ -133,7 +133,7 @@ app.post(
 );
 
 app.use("/elegant", userRouter);
-app.use("/elegant", elegant);
+app.use("", elegant);
 app.use("/elegant", reviewRoutes);
 app.listen(PORT, () => {
   console.log("serving 3000");
