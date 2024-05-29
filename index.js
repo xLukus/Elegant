@@ -93,11 +93,11 @@ function isAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
-  res.redirect("/login");
+  res.redirect("https://elegant-yod8.onrender.com/login");
 }
 
 app.post(
-  "/checkout",
+  "https://elegant-yod8.onrender.com/checkout",
   isAuthenticated,
   catchAsync(async (req, res) => {
     const user = await User.findById(req.user._id).populate("produkts");
@@ -125,8 +125,8 @@ app.post(
     const session = await stripe.checkout.sessions.create({
       line_items: lineItems,
       mode: "payment",
-      success_url: `${req.headers.origin}/elegant/successs`,
-      cancel_url: `${req.headers.origin}/elegant/cart`,
+      success_url: `${req.headers.origin}/successs`,
+      cancel_url: `${req.headers.origin}/cart`,
     }); //OD TUKA TREBA DA SE IZBIRSA PRODUKTO OD PRODUKTS ARRAY OTI AKO E COMPLETE TREBA SAMO DA SE ISPRATE U NEKOJ ORDER MODEL I DA SE CUVA U USER ZA POSLE DISPLAY
     res.redirect(session.url);
   })
