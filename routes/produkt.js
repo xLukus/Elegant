@@ -19,7 +19,7 @@ router
       const product = new Produkt(req.body);
       await product.save();
       req.flash("success", "Made a new Produkt");
-      res.redirect(`/elegant/${product._id}`);
+      res.redirect(`/${product._id}`);
     })
   );
 router.route("/successs").get(isLoggedIn, async (req, res) => {
@@ -36,7 +36,7 @@ router.route("/new").get(isLoggedIn, (req, res) => {
   user = req.user;
   userId = user._id.toString();
   if (userId != process.env.ADMIN) {
-    res.redirect("/elegant/login");
+    res.redirect("/login");
   } else {
     res.render("new");
   }
@@ -127,7 +127,7 @@ router
       const { id } = req.params;
       await Produkt.findByIdAndDelete(id);
       req.flash("success", "Successfully Deleted");
-      res.redirect("/elegant/shop");
+      res.redirect("/shop");
     })
   )
   .post(
@@ -139,7 +139,7 @@ router
       });
       await product.save();
       req.flash("success", "Successfully Updated");
-      res.redirect(`/elegant/${id}`);
+      res.redirect(`/${id}`);
     })
   );
 router.route("/:id/edit").get(
