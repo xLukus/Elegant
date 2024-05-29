@@ -15,7 +15,7 @@ const elegant = require("./routes/produkt.js");
 const dbUrl = process.env.MONGO_URI;
 const User = require("./models/user.js");
 const userRouter = require("./routes/user.js");
-const ExpressError = require("./utils/expressError.js");
+
 const stripe = require("stripe")(process.env.SECRET_KEY);
 const catchAsync = require("./utils/catchAsync.js");
 const reviewRoutes = require("./routes/review.js");
@@ -93,11 +93,11 @@ function isAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
-  res.redirect("https://elegant-yod8.onrender.com/login");
+  res.redirect("/login");
 }
 
 app.post(
-  "https://elegant-yod8.onrender.com/checkout",
+  "/checkout",
   isAuthenticated,
   catchAsync(async (req, res) => {
     const user = await User.findById(req.user._id).populate("produkts");
