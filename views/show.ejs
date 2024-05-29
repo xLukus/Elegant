@@ -52,7 +52,7 @@
                     </div>
 
 
-                    <% if(currentUser && product.author.equals(currentUser._id)){ %>
+                    <% if (currentUser && product.author && String(product.author)===String(currentUser._id)) { %>
                         <div style=" width: 100%; display: flex; margin-top:
                         100px;">
                             <a href="/elegant/<%= product.id %>/edit" class="kopce"> <button

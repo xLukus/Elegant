@@ -503,48 +503,77 @@ const products = [
   },
 ];
 
-mongoose.connect("mongodb://localhost:27017/elegant");
+const { MongoClient, ServerApiVersion } = require("mongodb");
 
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", () => {
-  console.log("Database opened");
+const client = new MongoClient(process.env.MONGO_URI, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
 });
+async function run() {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log(
+      "Pinged your deployment. You successfully connected to MongoDB!"
+    );
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
 
 const axios = require("axios");
-const seedDB = async () => {
-  await Produkt.deleteMany({}); // Assuming `Produkt` is your Mongoose model
-  let allUsers = await User.find({});
-  for (let user of allUsers) {
-    user.produkts = [];
-    await user.save();
-  }
-  for (const product of products) {
-    // Generate a new product document
-    let newProduct = new Produkt({
-      name: product.name,
-      price: product.price,
-      description: product.description,
-      val: 1,
-      image: "", // Placeholder for the image URL
-      measurments: product.measurements,
-      category: product.category,
-      author: process.env.ADMIN, //admin pw
-    });
 
-    // Fetch a random image URL from Unsplash based on the product category
-    try {
-      const response = await axios.get(
-        `https://source.unsplash.com/random?${product.name}`
-      );
-      newProduct.image = response.request.res.responseUrl;
-    } catch (error) {
-      console.error("Error fetching image:", error);
-      newProduct.image = "https://source.unsplash.com/random?interior"; // Provide a default image URL in case of an error
-    }
-
-    await newProduct.save(); // Save the product document
+const connectDB = async () => {
+  try {
+    mongoose.connect(process.env.MONGO_URI);
+    console.log("MongoDB connected successfully");
+  } catch (err) {
+    console.error("MongoDB connection error:", err);
+    process.exit(1);
   }
-  console.log("Database seeding complete");
 };
+
+const seedDB = async () => {
+  await connectDB();
+  try {
+    for (const product of products) {
+      // Generate a new product document
+      let newProduct = new Produkt({
+        name: product.name,
+        price: product.price,
+        description: product.description,
+        val: product.val,
+        measurements: product.measurements,
+        category: product.category,
+        author: process.env.ADMIN,
+      });
+
+      try {
+        const response = await axios.get(
+          `https://source.unsplash.com/random?${product.name}`
+        );
+        newProduct.image = response.request.res.responseUrl;
+      } catch (error) {
+        console.error("Error fetching image:", error);
+        newProduct.image = "https://source.unsplash.com/random?interior"; // Provide a default image URL in case of an error
+      }
+
+      await newProduct.save(); // Save the product document
+    }
+    console.log("Database seeding complete");
+  } catch (err) {
+    console.error("Error during seeding:", err);
+  } finally {
+    await mongoose.disconnect();
+    console.log("MongoDB disconnected");
+  }
+};
+
 seedDB();
