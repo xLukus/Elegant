@@ -38,7 +38,7 @@
                                             <h4>
                                                 Qty: <%=product.val %>
                                             </h4>
-                                            <form action="/elegant/deleteFromCart?_method=DELETE"
+                                            <form action="/deleteFromCart?_method=DELETE"
                                                 style=" display: flex; align-items: center;" method="POST">
                                                 <input type="hidden" value="<%= currentUser.id  %>" name="userid">
                                                 <input type="hidden" value="<%= product.id %>" name="id">
@@ -82,34 +82,32 @@
                 </form>
             </div>
             <div style="width: 100%; text-align: center; margin-top: 20px;">
-                <a href="/elegant/cart" style="width: 100%; height: 30px;">View Cart</a>
+                <a href="/cart" style="width: 100%; height: 30px;">View Cart</a>
             </div>
         </div>
 
     </div>
     <div class="cont">
         <div>
-            <h2 class="logo"><a href="/elegant">3legant.</a></h2>
+            <h2 class="logo"><a href="/">3legant.</a></h2>
         </div>
         <div class="center">
             <ul>
-                <li><a href="/elegant">Home</a></li>
-                <li><a href="/elegant/shop">Shop</a></li>
-                <li><a href="/elegant/contact">Contact Us</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/shop">Shop</a></li>
+                <li><a href="/contact">Contact Us</a></li>
             </ul>
         </div>
         <div style="display: flex;">
             <% if(!currentUser){%>
                 <div style="display: flex; justify-content: space-between; width: 100px; align-items: center;">
-                    <a class="nav-link" style="font-size: 12px;" href="/elegant/login">Login</a>
-                    <a class="nav-link" style="font-size: 12px; margin-right: 10px;"
-                        href="/elegant/register">Register</a>
+                    <a class="nav-link" style="font-size: 12px;" href="/login">Login</a>
+                    <a class="nav-link" style="font-size: 12px; margin-right: 10px;" href="/register">Register</a>
                 </div>
 
                 <% } else{%>
                     <div style="display: flex; justify-content: space-between; width: 50px; align-items: center;">
-                        <a class="nav-link" href="/elegant/logout"
-                            style="font-size: 12px; margin-right: 10px;">Logout</a>
+                        <a class="nav-link" href="/logout" style="font-size: 12px; margin-right: 10px;">Logout</a>
                     </div>
 
                     <%}%>
@@ -117,7 +115,7 @@
 
                             <% } else{%>
                                 <div>
-                                    <a href="/elegant/user/<%= currentUser.id %>" style="width:35%; height: 20px;">
+                                    <a href="/user/<%= currentUser.id %>" style="width:35%; height: 20px;">
                                         <img src="/pictures/icons/074e236f-3eba-4f6b-a9f2-05e396f81250.png" alt=""
                                             class="user"></a>
 
