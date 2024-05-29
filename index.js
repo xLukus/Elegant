@@ -20,7 +20,7 @@ const stripe = require("stripe")(process.env.SECRET_KEY);
 const catchAsync = require("./utils/catchAsync.js");
 const reviewRoutes = require("./routes/review.js");
 const Produkt = require("./models/produkt.js");
-
+const PORT = process.env.PORT;
 const store = new MongoStore({
   mongoUrl: dbUrl,
   touchAfter: 24 * 60 * 60,
@@ -135,7 +135,6 @@ app.post(
 app.use("/elegant", userRouter);
 app.use("/elegant", elegant);
 app.use("/elegant", reviewRoutes);
-
-app.listen(process.env.PORT, () => {
+app.listen(PORT, () => {
   console.log("serving 3000");
 });
