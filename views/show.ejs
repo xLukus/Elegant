@@ -40,7 +40,7 @@
                     <div style=" width: 100%; display: flex;justify-content: center;align-items: center; margin-top:
                         100px;">
                         <form style=" width: 100%; display: flex;justify-content: center;align-items: center; " action="
-                        https://elegant-yod8.onrender.com/addToCart" method="POST"><button class="add">Add to
+                        /addToCart" method="POST"><button class="add">Add to
                                 Cart</button>
                             <div id="inc-button" class="spinner-button">+</div>
                             <input type="number" value="1" min="1" max="100" class="inp" name="kol" />
@@ -56,10 +56,8 @@
                     <% if (currentUser && product.author && String(product.author)===String(currentUser._id)) { %>
                         <div style=" width: 100%; display: flex; margin-top:
                         100px;">
-                            <a href="https://elegant-yod8.onrender.com/<%= product.id %>/edit" class="kopce"> <button
-                                    class="add">Edit</button></a>
-                            <form action="https://elegant-yod8.onrender.com/<%= product.id  %>?_method=Delete"
-                                method="POST" style="width: 100%;">
+                            <a href="/<%= product.id %>/edit" class="kopce"> <button class="add">Edit</button></a>
+                            <form action="/<%= product.id  %>?_method=Delete" method="POST" style="width: 100%;">
                                 <a href="" class="kopce"><button class="add">Delete</button></a>
                             </form>
                         </div>
@@ -75,7 +73,7 @@
             align-items:start; margin: 20px; flex-direction: column;">
                 <h1 style=" border-bottom: 1px solid black; width: 100%;">Reviews</h1>
                 <% if (currentUser) { %>
-                    <form action="https://elegant-yod8.onrender.com/<%= product.id %>/review" method="POST">
+                    <form action="/<%= product.id %>/review" method="POST">
                         <fieldset class="starability-basic">
                             <legend>Leave a review</legend>
                             <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="0"
@@ -111,8 +109,7 @@
                                 </div>
                                 <div>
                                     <% if(currentUser && review.author.equals(currentUser._id)){ %>
-                                        <form
-                                            action="https://elegant-yod8.onrender.com/<%=product.id%>/review/<%=review.id%>?_method=DELETE"
+                                        <form action="/<%=product.id%>/review/<%=review.id%>?_method=DELETE"
                                             method="POST">
                                             <button class="add" style="width: 200px;">Delete review</button>
                                         </form>
