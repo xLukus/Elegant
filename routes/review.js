@@ -6,7 +6,7 @@ const Review = require("../models/review.js");
 
 const { isLoggedIn } = require("../middlewear.js");
 
-router.route("https://elegant-yod8.onrender.com/:id/review").post(
+router.route("/:id/review").post(
   isLoggedIn,
   catchAsync(async (req, res) => {
     const produkt = await Produkt.findById(req.params.id);
@@ -16,17 +16,17 @@ router.route("https://elegant-yod8.onrender.com/:id/review").post(
     await review.save();
     await produkt.save();
     req.flash("success", "Created new review!");
-    res.redirect(`https://elegant-yod8.onrender.com/elegant/${produkt._id}`);
+    res.redirect(`/${produkt._id}`);
   })
 );
-router.route("https://elegant-yod8.onrender.com/:id/review/:reviewId").delete(
+router.route("/:id/review/:reviewId").delete(
   isLoggedIn,
   catchAsync(async (req, res) => {
     const { id, reviewId } = req.params;
     await Produkt.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
     await Review.findByIdAndDelete(reviewId);
     req.flash("success", "Successfully deleted review");
-    res.redirect(`https://elegant-yod8.onrender.com/elegant/${id}`);
+    res.redirect(`/${id}`);
   })
 );
 module.exports = router;
