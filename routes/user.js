@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const { isLoggedIn, validateProdukt } = require("../middlewear.js");
 router
-  .route("/login")
+  .route("https://elegant-yod8.onrender.com/login")
   .get((req, res) => {
     res.render("user/login");
   })
@@ -19,14 +19,15 @@ router
     }),
     (req, res) => {
       req.flash("success", "Welcome to Elegant");
-      const redirectUrl = req.session.returnTo || "/elegant";
+      const redirectUrl =
+        req.session.returnTo || "https://elegant-yod8.onrender.com";
       delete req.session.returnTo;
 
       res.redirect(redirectUrl);
     }
   );
 router
-  .route("/register")
+  .route("https://elegant-yod8.onrender.com/register")
   .get((req, res) => {
     res.render("user/register");
   })
@@ -39,11 +40,11 @@ router
         req.login(registeredUser, (err) => {
           if (err) return next(err);
           req.flash("success", "Welcome to Elegant");
-          res.redirect("/elegant");
+          res.redirect("https://elegant-yod8.onrender.com");
         });
       } catch (e) {
         req.flash("error", e.message);
-        res.redirect("/elegant/register");
+        res.redirect("https://elegant-yod8.onrender.com/register");
       }
     })
   );
@@ -53,11 +54,11 @@ router.route("/logout").get((req, res) => {
       return next(err);
     }
     req.flash("success", "Goodbye!");
-    res.redirect("/elegant");
+    res.redirect("https://elegant-yod8.onrender.com");
   });
 });
 router
-  .route("/user/:id")
+  .route("https://elegant-yod8.onrender.com/user/:id")
   .get(
     isLoggedIn,
     catchAsync(async (req, res) => {

@@ -88,7 +88,7 @@
 
 
                                         </div>
-                                        <form action="/elegant/deleteFromCart?_method=DELETE"
+                                        <form action="https://elegant-yod8.onrender.com/deleteFromCart?_method=DELETE"
                                             style=" display: flex; align-items: center;" method="POST">
                                             <input type="hidden" value="<%= product.id %>" name="id">
                                             <button style="border: none;">
@@ -126,7 +126,7 @@
                                                 <% } %>
                         </div>
                         <div style="display: flex; justify-content: center; align-items: center;width: 50%;">
-                            <form action="/checkout" method="POST">
+                            <form action="https://elegant-yod8.onrender.com/checkout" method="POST">
                                 <input type="hidden" value="<%= currentUser.produkts  %>">
                                 <button class=" add">Checkout</button>
                             </form>
