@@ -85,7 +85,7 @@ router.route("/addToCart").post(
     foundUser.produkts.push(clonedProduct);
     await foundUser.save();
     req.flash("success", "Successfully added to cart");
-    res.redirect("/elegant/shop");
+    res.redirect("/shop");
   })
 );
 //delete from cart
