@@ -132,9 +132,9 @@ app.post(
   })
 );
 
-app.use("https://elegant-yod8.onrender.com/elegant", userRouter);
-app.use("https://elegant-yod8.onrender.com/elegant", elegant);
-app.use("https://elegant-yod8.onrender.com/elegant", reviewRoutes);
+app.use("https://elegant-yod8.onrender.com", userRouter);
+app.use("https://elegant-yod8.onrender.com", elegant);
+app.use("https://elegant-yod8.onrender.com", reviewRoutes);
 app.listen(PORT, () => {
   console.log("serving 3000");
 });
