@@ -7,6 +7,7 @@
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "builds":[{"src":"./index.js","use":"@vercel/node"}],
   "keywords": [],
   "author": "",
   "license": "ISC",
