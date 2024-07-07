@@ -553,19 +553,26 @@ const seedDB = async () => {
         price: product.price,
         description: product.description,
         val: product.val,
-        measurments: product.measurements,
+        measurements: product.measurements,
         category: product.category,
         author: process.env.ADMIN,
       });
 
       try {
         const response = await axios.get(
-          `https://source.unsplash.com/random?${product.name}`
+          `https://api.unsplash.com/photos/random`,
+          {
+            params: {
+              query: product.name,
+              client_id: process.env.UNSPLASH_KEY,
+            },
+          }
         );
-        newProduct.image = response.request.res.responseUrl;
+        newProduct.image = response.data.urls.full;
       } catch (error) {
         console.error("Error fetching image:", error);
-        newProduct.image = "https://source.unsplash.com/random?interior"; // Default image URL
+        newProduct.image =
+          "https://via.placeholder.com/1600x900.png?text=No+Image+Available"; // Default image URL
       }
 
       await newProduct.save();
