@@ -11,6 +11,7 @@
     <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="/pictures/favicon.png">
 </head>
 
 <body>
@@ -24,15 +25,15 @@
                         <div class="carousel-inner" data-bs-interval="2000">
                             <div class="carousel-item active">
                                 <img src="/pictures/carosel/959dab9ab97b3d3011121fcd3300f861.jpg" class="d-block w-100"
-                                    alt="..." style="height:700px">
+                                    alt="..." style="height:20%">
                             </div>
                             <div class="carousel-item" data-bs-interval="2000">
                                 <img src="/pictures/carosel/HD-wallpaper-interior-design-architecture-decoration-landscape.jpg"
-                                    class="d-block w-100" alt="..." style="height:700px">
+                                    class="d-block w-100" alt="..." style="height:20%">
                             </div>
                             <div class="carousel-item" data-bs-interval="2000">
                                 <img src="/pictures/carosel/images.jpg" class="d-block w-100" alt="..."
-                                    style="height:700px">
+                                    style="height:20%">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
@@ -46,51 +47,53 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-
                 </div>
             </div>
             <div style="width: 100%; display: flex;
         justify-content: center;
-        align-items: center; margin-top: 700px; position: relative;">
-                <div style="width: 70%; height: 100%; display: flex; justify-content: center; " class="centered">
-                    <div style="width: 50%;">
+        align-items: center; margin-top: 40%; position: relative;">
+                <div style="width: 70%; height: 100%; display: flex; justify-content: center;  " class="centered">
+                    <div style="width: 100%;">
                         <h1 class="mutant">Simply Unique/
                             Simply Better.</h1>
                     </div>
-                    <div style="width: 50%;">
+                    <div style="width: 100%;">
                         <p><b style="font-size: 20px;">3legant</b> is a gift & decorations store based in HCMC, Vietnam.
                             Est
                             since 2019. </p>
                     </div>
                 </div>
             </div>
-            <div style="width: 100%; height: 800px; display: flex;
+            <div style="width: 100%; height: 40%; display: flex;
         justify-content: center;
         align-items: center; margin-top: 100px;">
                 <div style="width: 70%; height: 100%; display: flex;
             justify-content: center;
             align-items: center;" class="main2">
-                    <div class="block">
+                    <div class="block" id="somargin">
                         <div class="text">
-                            <h2>Living Room</h2>
-                            <a href="/shop">Shop Now</a><img src="/pictures/icons/arrow.png" alt="">
+                            <h2 style="font-size: 120%;">Living Room</h2>
+                            <a href="/shop" style="font-size: 100%;">Shop Now</a><img src="/pictures/icons/arrow.png"
+                                alt="">
                         </div>
-                        <img src="/pictures/homepage/chair2.png" alt="" style="width: 90%" height="710px">
+                        <img src="/pictures/homepage/chair2.png" alt="" style="width: 95% ;height:100%">
                     </div>
                     <div class="block">
                         <div class="m1">
                             <div class="text">
-                                <h2>Bedroom</h2>
-                                <a href="/shop">Shop Now</a><img src="/pictures/icons/arrow.png" alt="">
+                                <h2 style="font-size: 120%;">Bedroom</h2>
+                                <a href="/shop" style="font-size: 100%;">Shop Now</a><img
+                                    src="/pictures/icons/arrow.png" alt="">
                             </div>
-                            <img src="/pictures/homepage/table.png" alt="" style="width: 100%; height: 350px;">
+                            <img src="/pictures/homepage/table.png" alt="" style="width: 95%; height: 70%">
                         </div>
                         <div class="m1">
                             <div class="text">
-                                <h2>Kitchen</h2>
-                                <a href="/shop">Shop Now</a><img src="/pictures/icons/arrow.png" alt="">
+                                <h2 style="font-size: 120%;">Kitchen</h2>
+                                <a href="/shop" style="font-size: 100%;">Shop Now</a><img
+                                    src="/pictures/icons/arrow.png" alt="">
                             </div>
-                            <img src="/pictures/homepage/toaster.png" alt="" style="width: 100%; height: 350px;">
+                            <img src="/pictures/homepage/toaster.png" alt="" style="width: 95%; height: 70%;">
                         </div>
                     </div>
                 </div>
@@ -103,13 +106,19 @@
                 </div>
             </div>
             <div style="width: 100%; display: flex;
-        justify-content: center; height: 500px;
+        justify-content: center; height: 100%;
         align-items: center; margin-bottom: 100px;">
-                <div style="width: 70%; height: 100%; display: flex;   justify-content: space-between;">
+                <div
+                    style="position: absolute; background: rgb(231,231,231);
+background: radial-gradient(circle, rgba(231,231,231,1) 0%, rgba(255,255,255,1) 39%); width: 1500px; height: 1500px; z-index: -1; ">
+
+                </div>
+                <div
+                    style="width: 70%; height: 100%;display: flex;align-items: center;  flex-wrap: wrap;  justify-content:space-evenly;">
                     <% for(let i=11;i<15;i++){ %>
                         <div
-                            style="background-color: #F3F5F7;height: 100%; width: 23%; display: flex; justify-content: center; align-items: center; flex-direction: column;">
-                            <img src="<%= produkts[i].image %>" style="width: 90%; height: 300px;margin-top:20px ;"
+                            style="margin:20px 0;height: 100%; width: 500px; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                            <img src="<%= produkts[i].image %>" style="width: 90%; height: 100%;margin-top:20px ;"
                                 alt="">
                             <div style="height: 100px; width: 90%;">
                                 <p style="font-size: 20px;margin-top: 10px;">
@@ -123,19 +132,26 @@
                 </div>
             </div>
             <div style="width: 100%; display: flex;
-        justify-content: center; height: 700px;
-        align-items: center; margin-bottom: 150px;background-color: #F3F5F7">
-                <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+        justify-content: center;
+        align-items: center; margin-bottom: 150px;">
+                <div
+                    style="background: rgb(231,231,231);
+background: radial-gradient(circle, rgba(231,231,231,1) 0%, rgba(255,255,255,1) 57%);position: absolute; width: 700px; height:700px; z-index: -1; right: 0;">
+
+                </div>
+                <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; "
+                    id="sek4">
                     <img src="/pictures/homepage/sales.png" style="width: 50%; height: 100%;" alt="">
-                    <div style="display: flex; justify-content: center; align-items: center; width: 50%;">
+                    <div
+                        style="display: flex; justify-content: center; align-items: center;text-align: center;align-content: center; width: 70%;">
                         <div
-                            style="width: 700px; height: 300px;display: flex; text-align: start; align-items: center; flex-direction: column;">
-                            <p style="margin-top: 20px; color: rgb(72, 72, 227); width: 440px">
+                            style="width: 100%; height: 100%;display: flex; text-align: start; align-items: center; flex-direction: column; justify-content: center;">
+                            <p style="margin-top: 1vw; color: rgb(72, 72, 227); width: 90%">
                                 SALE UP TO 30% OFF
                             </p>
-                            <h1 style="font-size: 50px;">HUNDREDS of <br>
+                            <h1 style="font-size: 4vw; width: 90%">HUNDREDS of <br>
                                 New lower prices!</h1>
-                            <p style="font-size: 20px;">
+                            <p style="font-size: 1vw; width: 90%">
                                 It’s more affordable than ever to give every <br>room in your home a stylish makeover
                             </p>
 
@@ -153,12 +169,12 @@
                 </div>
             </div>
             <div style="width: 100%; display: flex;
-            justify-content: center; height: 500px;
+            justify-content: center; 
             align-items: center; margin-bottom: 100px;">
-                <div style="width: 70%; height: 100%; display: flex;   justify-content: space-between;">
+                <div style="width: 70%; height: 100%; display: flex;   justify-content: space-evenly; flex-wrap: wrap;">
 
                     <div
-                        style="height: 100%; width: 30%; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                        style="height: 100%; width: 400px; display: flex; justify-content: center; align-items: center; flex-direction: column;">
                         <img src="/pictures/homepage/kec.png" style="width: 90%; height: 300px;margin-top:20px ;"
                             alt="">
                         <div style="height: 100px; width: 90%;">
@@ -169,7 +185,7 @@
                         </div>
                     </div>
                     <div
-                        style="height: 100%; width: 30%; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                        style="height: 100%; width: 400px; display: flex; justify-content: center; align-items: center; flex-direction: column;">
                         <img src="/pictures/homepage/dva.png" style="width: 90%; height: 300px;margin-top:20px ;"
                             alt="">
                         <div style="height: 100px; width: 90%;">
@@ -180,7 +196,7 @@
                         </div>
                     </div>
                     <div
-                        style="height: 100%; width: 30%; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                        style="height: 100%; width: 400px; display: flex; justify-content: center; align-items: center; flex-direction: column;">
                         <img src="/pictures/homepage/tri.png" style="width: 90%; height: 300px;margin-top:20px ;"
                             alt="">
                         <div style="height: 100px; width: 90%;">
@@ -194,15 +210,21 @@
                 </div>
             </div>
             <%- include('../partials/footer') %>
+
 </body>
 
 </html>
+
 <style>
     * {
         margin: 0;
         padding: 0;
         scroll-behavior: smooth;
 
+    }
+
+    body {
+        overflow-x: hidden;
     }
 
     .centered {
@@ -213,7 +235,8 @@
 
 
     .mutant {
-        font-size: 65px;
+        font-size: 180%;
+        width: 100%;
     }
 
     .main2 {
@@ -244,5 +267,40 @@
         text-decoration: underline;
         color: black;
 
+    }
+
+    @media (min-width:300px) and (max-width: 650px) {
+        .centered {
+            flex-direction: column;
+        }
+
+        .main2 {
+            flex-direction: column;
+        }
+
+        .block {
+            height: 50% !important;
+        }
+
+        #somargin {
+            margin-bottom: 3%;
+        }
+
+        #sek4 {
+            flex-wrap: wrap !important;
+
+        }
+
+        #sek4,
+        #sek4 p,
+        #sek4 h1 {
+            font-size: 15px !important;
+            width: 100% !important;
+        }
+
+        #sek4 img {
+            width: 70% !important;
+
+        }
     }
 </style>

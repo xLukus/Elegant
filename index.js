@@ -19,7 +19,7 @@ const userRouter = require("./routes/user.js");
 const stripe = require("stripe")(process.env.SECRET_KEY);
 const catchAsync = require("./utils/catchAsync.js");
 const reviewRoutes = require("./routes/review.js");
-const Produkt = require("./models/produkt.js");
+
 const PORT = process.env.PORT;
 const store = new MongoStore({
   mongoUrl: dbUrl,

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elegant</title>
+    <link rel="icon" type="image/x-icon" href="/pictures/favicon.png">
 </head>
 
 <body>
@@ -19,13 +20,13 @@
                     <h2 style="font-size: 60px;">Cart</h2>
                 </div>
             </div>
-            <div style="width: 100%; height: 100px; display: flex;
+            <div style="width: 100%; height: auto; display: flex;
         justify-content: center;
         align-items: center;">
                 <div style="width: 70%; height: 100%; display: flex;
             justify-content: center;
             align-items: center; margin: 20px;">
-                    <div>
+                    <div id="slikicki">
                         <img src="/pictures/cart/prv/31ad5df6-2119-4d03-bda1-12d7c327b4c9.png" alt="">
                         <img src="/pictures/cart/prv/13ee2743-01f8-48f8-b77c-90f1444094b7.png" alt="">
                         <img src="/pictures/cart/prv/4f2e1df5-f6c5-4f6a-be38-d84374670989.png" alt="">
@@ -36,9 +37,9 @@
         justify-content: center ;
         align-items: center; margin-top: 30px; font-size: 30px;">
                 <div style="width: 80%; display: flex;
-            align-items: center; margin: 20px;  flex-direction: column; margin-left: 10px;">
+            align-items: center; margin: 20px;  flex-direction: row; margin-left: 10px;">
                     <div style="width: 100%;">
-                        <ul style="width: 100%;display: flex; justify-content: space-evenly;">
+                        <ul style="width: 100%;display: flex; justify-content: space-evenly; flex-direction: row;">
                             <li style="width: 100%;">
                                 Name
                             </li>
@@ -46,10 +47,10 @@
                                 Qty
                             </li>
                             <li style="width: 100%;">
-                                Price
+                                Sub
                             </li>
                             <li style="width: 100%;">
-                                Sub
+                                Price
                             </li>
                         </ul>
 
@@ -58,10 +59,10 @@
             </div>
             <div style="width: 100%; display: flex;
         justify-content: center ;
-        align-items: center; margin-top: 30px; ">
+        align-items: center; margin-top: 30px; " id="nastrana">
                 <div style="width: 70%; display: flex;
             justify-content: center;
-            align-items: center; margin: 20px;  flex-direction: column;">
+            align-items: center; margin: 20px;  flex-direction: column;" id="podnastrana">
                     <% if(currentUser){ %>
                         <% for(product of currentUser.produkts ){ %>
 
@@ -69,9 +70,13 @@
                                 <div>
                                     <div class="block" style="display: flex;">
                                         <div style="width: 100%; display: flex;">
-                                            <img src="<%= product.image %>" alt="" width="150px" height="150px">
-                                            <ul style="width: 80%;display: flex; justify-content: space-evenly;">
-                                                <li style="width: 100%; margin: 0;">
+                                            <div style="width: 150px; height: 150px; margin-right: 20px;">
+                                                <img src="<%= product.image %>" alt="" width="150px" height="150px">
+                                            </div>
+
+                                            <ul style="width: 80%;display: flex; justify-content: space-evenly; text-align: center;"
+                                                id="productUl">
+                                                <li style="width: 150%; margin: 0;">
                                                     <%=product.name %>
                                                 </li>
                                                 <li style="width: 100%; margin: 0;">
@@ -112,7 +117,7 @@
                 </div>
                 <div style="width: 30%; height: 400px;   ">
                     <div
-                        style="height: 100px; width: 80%; display: flex; justify-content: space-between; border: 2px solid black; flex-direction: column; align-items: center;">
+                        style="height: 100px; width: 200px; display: flex; justify-content: space-between; border: 2px solid black; flex-direction: column; align-items: center;">
                         <div style="width: 50%; text-align: center;">
                             <h1>Total</h1>
                             <% if(currentUser){ %>
@@ -160,5 +165,21 @@
         color: white;
         background-color: black;
         cursor: pointer;
+    }
+
+
+
+    @media (min-width:300px) and (max-width: 1000px) {
+        #nastrana {
+            flex-direction: column !important;
+        }
+
+        #podnastrana {
+            width: 90% !important;
+        }
+
+        #productUl {
+            flex-direction: column !important;
+        }
     }
 </style>

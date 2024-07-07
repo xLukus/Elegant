@@ -5,28 +5,392 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elegant</title>
+    <link rel="icon" type="image/x-icon" href="/pictures/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            overflow: hidden;
+        }
+
+        .image-block {
+            width: 60%;
+            height: 100%;
+        }
+
+        .image-block img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .form-block {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            height: 500px;
+            width: 40%;
+        }
+
+        .form-container h1 {
+            font-size: 40px;
+        }
+
+        .form-container p {
+            font-size: 20px;
+            margin-top: 30px;
+        }
+
+        .form-container a {
+            color: green;
+        }
+
+        .user-box {
+            margin-top: 30px;
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .user-box input {
+            width: 400px;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 30px;
+            border: none;
+            border-bottom: 2px solid #333;
+            outline: none;
+            background: transparent;
+        }
+
+        .user-box label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #333;
+            pointer-events: none;
+            transition: 0.5s;
+        }
+
+        .user-box input:focus~label,
+        .user-box input:valid~label {
+            transform: translateY(-20px);
+            font-size: 14px;
+            color: #333;
+        }
+
+        .add {
+            width: 400px;
+            height: 40px;
+            border: 1px solid black;
+            background-color: white;
+            font-size: 15px;
+            color: black;
+            border-radius: 15px;
+        }
+
+        .add:hover {
+            color: white;
+            background-color: black;
+            cursor: pointer;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .elegant-link {
+            display: flex;
+            justify-self: center;
+            width: 400px;
+
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .elegant-link a {
+            width: 100%;
+            text-decoration: none;
+            font-size: 40px;
+            color: black;
+        }
+
+        .password-toggle-icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .password-toggle-icon i {
+            font-size: 18px;
+            line-height: 1;
+            color: #333;
+            transition: color 0.3s ease-in-out;
+            margin-bottom: 20px;
+        }
+
+        .password-toggle-icon i:hover {
+            color: #000;
+        }
+
+        @media (min-width:300px) and (max-width: 650px) {
+
+            .container {
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: fixed;
+                overflow: hidden;
+                flex-direction: column;
+            }
+
+            .image-block {
+                width: 100%;
+                height: 1000%;
+            }
+
+            .image-block img {
+                width: 100%;
+                height: 100%;
+            }
+
+            .form-container {
+                height: 10%;
+                width: auto;
+            }
+
+            .form-container p {
+                margin: 10px 0;
+            }
+
+            .login-header {
+                font-size: 40px;
+            }
+
+            .signup-text {
+                font-size: 20px;
+                margin-top: 0px;
+            }
+
+            .block,
+            .image-block,
+            .form-container {
+                width: 100%;
+                height: 50%;
+            }
+
+            form {
+                margin-top: -120px;
+            }
+
+            .form-block {
+                width: 80%;
+                height: 80%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            input {
+                width: 120%;
+                padding: 10px 0;
+                font-size: 16px;
+                color: #333;
+                margin-bottom: 10px;
+                border: none;
+                border-bottom: 2px solid #333;
+                outline: none;
+                background: transparent;
+            }
+
+            .user-box {
+                margin-top: 0px;
+                width: 100%;
+                position: relative;
+                margin-bottom: 10px;
+            }
+
+
+
+            .elegant-link {
+                display: flex;
+                justify-self: center;
+                width: 100%;
+
+                text-align: center;
+                margin-top: 30px;
+            }
+
+            .login-button {
+                width: 100%;
+                height: 40px;
+                border: 1px solid black;
+                background-color: white;
+                font-size: 15px;
+                color: black;
+                border-radius: 15px;
+            }
+
+            .user-box input {
+                width: 100%;
+                padding: 10px 0;
+                font-size: 16px;
+                color: #333;
+                margin-bottom: 30px;
+                border: none;
+                border-bottom: 2px solid #333;
+                outline: none;
+                background: transparent;
+            }
+
+            .add {
+                width: 100%;
+                height: 40px;
+            }
+        }
+
+
+        @media (min-width:650px) and (max-width: 1400px) {
+
+            .container {
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: fixed;
+                overflow: hidden;
+
+            }
+
+            .add {
+                width: 100%;
+                height: 40px;
+            }
+
+            .form-container {
+                height: 10%;
+                width: auto;
+            }
+
+            .login-header {
+                font-size: 40px;
+            }
+
+            .signup-text {
+                font-size: 20px;
+                margin-top: 30px;
+            }
+
+            .block,
+            .image-block,
+            .form-container {
+                width: 70%;
+                height: 100%;
+            }
+
+            form {
+                margin-top: -100px;
+            }
+
+            .form-block {
+                width: 80%;
+                height: 40%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            input {
+                width: 120%;
+                padding: 10px 0;
+                font-size: 16px;
+                color: #333;
+                margin-bottom: 30px;
+                border: none;
+                border-bottom: 2px solid #333;
+                outline: none;
+                background: transparent;
+            }
+
+            .user-box {
+                margin-top: 30px;
+                width: 100%;
+                position: relative;
+                margin-bottom: 30px;
+            }
+
+            .elegant-link {
+                display: flex;
+                justify-self: center;
+                width: 100%;
+
+                text-align: center;
+                margin-top: 30px;
+            }
+
+
+            .login-button {
+                width: 100%;
+                height: 40px;
+                border: 1px solid black;
+                background-color: white;
+                font-size: 15px;
+                color: black;
+                border-radius: 15px;
+            }
+
+            .user-box input {
+                width: 100%;
+                padding: 10px 0;
+                font-size: 16px;
+                color: #333;
+                margin-bottom: 30px;
+                border: none;
+                border-bottom: 2px solid #333;
+                outline: none;
+                background: transparent;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <div
-        style="width: 100%; height: 100vh;  display: flex;justify-content: center; align-items: center; position: fixed; overflow: hidden;">
-        <div class="block" style="width: 60%; height: 100%;"><img
-                src="/pictures/login/9d1b74f2-f93f-479e-986d-1c13d84e7e41.png" alt=""
-                style="width: 100%; height: 100%;">
+    <div class="container">
+        <div class="image-block">
+            <img src="/pictures/login/9d1b74f2-f93f-479e-986d-1c13d84e7e41.png" alt="">
         </div>
-        <div class="block"
-            style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
-            <div style=" height: 500px; width: 40%;">
+        <div class="form-block">
+            <div class="form-container">
                 <form action="https://elegant-yod8.onrender.com/register" method="POST">
-                    <h1 style="font-size: 40px;">Sign Up</h1>
-                    <p style="font-size: 20px;margin-top:30px ;">Have an account ? <span class="Sign Up"><a
-                                href="https://elegant-yod8.onrender.com/login" style="color: green;">Log In</a></span>
-                    </p>
-                    <div class="user-box" style="margin-top:30px ;">
+                    <h1>Sign Up</h1>
+                    <p>Have an account? <span class="sign-up"><a href="https://elegant-yod8.onrender.com/login">Log
+                                In</a></span></p>
+                    <div class="user-box">
                         <input type="text" name="username" required="" />
                         <label>Username</label>
                     </div>
@@ -35,20 +399,16 @@
                         <label>Password</label>
                         <span class="password-toggle-icon"><i class="fas fa-eye"></i></span>
                     </div>
-                    <div class="user-box" style="margin-top:30px ;">
+                    <div class="user-box">
                         <input type="email" name="email" required="" />
                         <label>Email</label>
                     </div>
-                    <button style="width: 400px; " class="add">Sign Up</button><br>
-                    <div
-                        style="display: flex; justify-self: center; width: 400px; text-align: center; margin-top: 30px;">
-                        <a href="https://elegant-yod8.onrender.com" style="width: 100%; font-size: 40px;">Elegant.</a>
+                    <button class="add">Sign Up</button><br>
+                    <div class="elegant-link">
+                        <a href="https://elegant-yod8.onrender.com">Elegant.</a>
                     </div>
-
                 </form>
             </div>
-
-
         </div>
     </div>
     <%- include('../../partials/flash') %>
@@ -56,183 +416,6 @@
 
 </html>
 
-
-
-<style>
-    .add {
-        width: 100%;
-        height: 40px;
-        border: 1px solid black;
-        background-color: white;
-        font-size: 15px;
-        color: black;
-        border-radius: 15px;
-
-
-    }
-
-    .add:hover {
-        color: white;
-        background-color: black;
-        cursor: pointer;
-    }
-
-    * {
-        padding: 0;
-        margin: 0;
-    }
-
-    a {
-        text-decoration: none;
-        color: black;
-    }
-
-    .user-box {
-        position: relative;
-        margin-bottom: 30px;
-    }
-
-    .user-box input {
-        width: 400px;
-        padding: 10px 0;
-        font-size: 16px;
-        color: #333;
-        margin-bottom: 30px;
-        border: none;
-        border-bottom: 2px solid #333;
-        outline: none;
-        background: transparent;
-    }
-
-    .user-box label {
-        position: absolute;
-        top: 0;
-        left: 0;
-        padding: 10px 0;
-        font-size: 16px;
-        color: #333;
-        pointer-events: none;
-        transition: 0.5s;
-    }
-
-    .user-box input:focus~label,
-    .user-box input:valid~label {
-        transform: translateY(-20px);
-        font-size: 14px;
-        color: #333;
-    }
-
-
-
-
-    a span {
-        position: absolute;
-        display: block;
-    }
-
-    a span:nth-child(1) {
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 2px;
-        background-color: #333;
-        animation: animate1 1s linear infinite;
-    }
-
-    @keyframes animate1 {
-        0% {
-            left: -100%;
-        }
-
-        50%,
-        100% {
-            left: 100%;
-        }
-    }
-
-    a span:nth-child(2) {
-        top: -100%;
-        right: 0;
-        width: 2px;
-        height: 100%;
-        background-color: #333;
-        animation: animate2 1s linear infinite;
-        animation-delay: 0.25s;
-    }
-
-    @keyframes animate2 {
-        0% {
-            top: -100%;
-        }
-
-        50%,
-        100% {
-            top: 100%;
-        }
-    }
-
-    a span:nth-child(3) {
-        bottom: 0;
-        right: -100%;
-        width: 100%;
-        height: 2px;
-        background-color: #333;
-        animation: animate3 1s linear infinite;
-        animation-delay: 0.5s;
-    }
-
-    @keyframes animate3 {
-        0% {
-            right: -100%;
-        }
-
-        50%,
-        100% {
-            right: 100%;
-        }
-    }
-
-    a span:nth-child(4) {
-        bottom: -100%;
-        left: 0;
-        width: 2px;
-        height: 100%;
-        background-color: #333;
-        animation: animate4 1s linear infinite;
-        animation-delay: 0.75s;
-    }
-
-    @keyframes animate4 {
-        0% {
-            bottom: -100%;
-        }
-
-        50%,
-        100% {
-            bottom: 100%;
-        }
-    }
-
-    .password-toggle-icon {
-        position: absolute;
-        top: 50%;
-        right: 10px;
-        transform: translateY(-50%);
-        cursor: pointer;
-    }
-
-    .password-toggle-icon i {
-        font-size: 18px;
-        line-height: 1;
-        color: #333;
-        transition: color 0.3s ease-in-out;
-        margin-bottom: 20px;
-    }
-
-    .password-toggle-icon i:hover {
-        color: #000;
-    }
-</style>
 <script>
     const passwordField = document.getElementById("password");
     const togglePassword = document.querySelector(".password-toggle-icon i");

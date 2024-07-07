@@ -7,6 +7,7 @@
     <title>Elegant</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="/pictures/favicon.png">
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
@@ -15,25 +16,25 @@
 <body>
     <%- include('../partials/navbar') %>
         <%- include('../partials/flash') %>
-            <div style="width: 100%; height: 600px; display: flex;
+            <div style="width: 100%; height: 120%; display: flex;
         justify-content: center;
-        align-items: center;">
+        align-items: center; margin-top: 20px;">
                 <div style="width: 70%; height: 100%; display: flex;
             justify-content: center;
             align-items: center;">
                     <img src="/pictures/shop/9c5f20ae-fd8c-46ac-86c3-ec7c1b71c682.png" alt=""
-                        style="width: 100%; height: 100%;">
+                        style="width: 100%; height: 120%;">
                     <div class="text">
-                        <h1>Shop Page</h1>
-                        <p>Let's design the place you always imagined.</p>
+                        <h1 style="font-size: 4vw;">Shop Page</h1>
+                        <p style="font-size: 2vw;">Let's design the place you always imagined.</p>
                     </div>
                 </div>
             </div>
             <div style="width: 100%; display: flex;
         justify-content: center;
         align-items: center; margin-top: 70px; flex-direction: column;">
-                <div style="width: 70%;  display: flex; height: auto;
-        ">
+                <div style="width: 70%;  display: flex; height: auto; 
+        " id="d60">
                     <div class=" d20" style="width: 20%; height: 500px; margin-right: 100px;">
                         <h2 style="font-size: 30px;"><img src="/pictures/shop/filtericon.png" alt="">Filter</h2>
                         <h3>Categories</h3>
@@ -336,5 +337,20 @@
         border-color: black;
         background-color: black;
         background-clip: content-box;
+    }
+
+    @media (min-width:300px) and (max-width: 700px) {}
+
+    @media (min-width:300px) and (max-width: 1000px) {
+        #d60 {
+            flex-direction: column;
+        }
+
+        .d20 {
+            width: 100% !important;
+            height: 500px !important;
+            margin-right: 100px !important;
+            margin-bottom: 100px !important;
+        }
     }
 </style>

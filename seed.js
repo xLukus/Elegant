@@ -543,14 +543,17 @@ const connectDB = async () => {
 const seedDB = async () => {
   await connectDB();
   try {
+    // Clear all products before seeding
+    await Produkt.deleteMany({});
+    console.log("All products cleared");
+
     for (const product of products) {
-      // Generate a new product document
       let newProduct = new Produkt({
         name: product.name,
         price: product.price,
         description: product.description,
         val: product.val,
-        measurements: product.measurements,
+        measurments: product.measurements,
         category: product.category,
         author: process.env.ADMIN,
       });
@@ -562,10 +565,10 @@ const seedDB = async () => {
         newProduct.image = response.request.res.responseUrl;
       } catch (error) {
         console.error("Error fetching image:", error);
-        newProduct.image = "https://source.unsplash.com/random?interior"; // Provide a default image URL in case of an error
+        newProduct.image = "https://source.unsplash.com/random?interior"; // Default image URL
       }
 
-      await newProduct.save(); // Save the product document
+      await newProduct.save();
     }
     console.log("Database seeding complete");
   } catch (err) {

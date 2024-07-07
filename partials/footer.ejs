@@ -1,70 +1,230 @@
-<footer
-    style="width: 100%; display: flex; justify-content: center; align-items: center; text-align: center; flex-direction: column; bottom: 0%;">
-
-    <img src="/pictures/footer/840e54c8-1fa5-41e8-a2c9-c2d3014f07e4.png" alt="" width="100%">
-    <div style="position: absolute; ">
-        <h1 style="font-size: 40px;">Join Our Newsletter</h1>
-        <h2>Sign up for deals, new products and promotions</h2>
-        <input type="email" placeholder="Email" name="" id=""
-            style="margin-top: 40px; width: 400px;height: 30px; border: none; background-color: transparent; border-bottom: 1px solid black;">
-        <button style="border: none; background-color: transparent; cursor: pointer;">Sign Up</button>
+<footer class="footer-style">
+    <img src="/pictures/footer/840e54c8-1fa5-41e8-a2c9-c2d3014f07e4.png" alt="" class="footer-img">
+    <div class="footer-text">
+        <h1 class="footer-heading">Join Our Newsletter</h1>
+        <h2 class="footer-subheading">Sign up for deals, new products and promotions</h2>
+        <input type="email" placeholder="Email" name="" id="" class="footer-input">
+        <button class="footer-button">Sign Up</button>
     </div>
-
 </footer>
-<div
-    style="background-color: black;width: 100%;height: 400px; color: white; display: flex; justify-content: center; align-items: center;  ">
-    <div
-        style=" display: flex; justify-content: center; align-items: center; text-align: center; width: 70%; flex-direction: column;">
-        <div style="display: flex; width: 100%;">
-
-
-            <div class="par " style=" display: flex;
-justify-content: start;
-align-items: center;
-text-align: center;
-width: 100%;">
-                <span style="font-size: 30px; margin-right: 100px;">3legant. </span>
+<div class="footer-bottom">
+    <div class="footer-content">
+        <div class="footer-links">
+            <div class="footer-logo">
+                <span class="footer-logo-text">3legant.</span>
                 <span>Gift & Decoration Store</span>
             </div>
-            <div class="par" style=" display: flex;
-justify-content: end;
-align-items: center;
-text-align: center;
-width: 70%;">
+            <div class="footer-navigation">
                 <ul>
-                    <li><a class="footera " href="/">Home</a></li>
-                    <li><a class="footera " href="/shop">Shop</a></li>
+                    <li><a class="footera" href="/">Home</a></li>
+                    <li><a class="footera" href="/shop">Shop</a></li>
                     <li><a class="footera" href="/contact">Contact Us</a></li>
                 </ul>
-
             </div>
         </div>
-        <div style="display: flex; margin-top: 100px; width: 100%; border-top: 1px solid grey; padding: 10px;">
-            <div class="par " style=" display: flex;
-justify-content: start;
-align-items: center;
-text-align: center;
-width: 70%;">
-                <span style="margin:0">Copyright © 2023 3legant. All rights reserved</span>
-                <span style="margin:0 20px;">Privacy Policy</span>
-                <span style="margin:0 20px;">Terms of Use</span>
+        <div class="footer-bottom-content">
+            <div class="footer-copyright">
+                <span>Copyright © 2024 3legant. All rights reserved</span>
+                <span>Privacy Policy</span>
+                <span>Terms of Use</span>
             </div>
-            <div class="par" style=" display: flex;
-justify-content: end;
-align-items: center;
-text-align: center;
-width: 70%;">
+            <div class="footer-icons">
                 <img src="/pictures/footer/icon/10f0582b-f020-4e30-855f-d42fe91e8153.png" alt="">
                 <img src="/pictures/footer/icon/76dc9cda-ea44-44d6-b607-e27b60548bd0.png" alt="">
                 <img src="/pictures/footer/icon/77037dba-08be-47a9-886b-283b25a9f3ce.png" alt="">
             </div>
         </div>
     </div>
+</div>
 
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
 
+    .footera {
+        color: white;
+    }
 
-    <style>
-        .footera {
-            color: white;
+    .footer-style {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        bottom: 0%;
+    }
+
+    .footer-img {
+        width: 100%;
+    }
+
+    .footer-text {
+        position: absolute;
+    }
+
+    .footer-heading {
+        font-size: 40px;
+    }
+
+    .footer-input {
+        margin-top: 40px;
+        width: 400px;
+        height: 30px;
+        border: none;
+        background-color: transparent;
+        border-bottom: 1px solid black;
+    }
+
+    .footer-button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .footer-bottom {
+        background-color: black;
+        width: 100%;
+        height: 400px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 70%;
+        flex-direction: column;
+    }
+
+    .footer-links {
+        display: flex;
+        width: 100%;
+    }
+
+    .footer-logo {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .footer-logo-text {
+        font-size: 30px;
+        margin-right: 100px;
+    }
+
+    .footer-navigation {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        text-align: center;
+        width: 70%;
+    }
+
+    .footer-bottom-content {
+        display: flex;
+        margin-top: 100px;
+        width: 100%;
+        border-top: 1px solid grey;
+        padding: 10px;
+    }
+
+    .footer-copyright {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        text-align: center;
+        width: 70%;
+    }
+
+    .footer-icons {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        text-align: center;
+        width: 70%;
+    }
+
+    @media (min-width:300px) and (max-width: 900px) {
+        .footer-style {
+            display: none;
         }
-    </style>
+    }
+
+    @media (min-width:300px) and (max-width: 700px) {
+        .footer-logo {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            flex-direction: column;
+        }
+
+        .footer-logo-text {
+            font-size: 30px;
+            margin-right: 0;
+        }
+
+        ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .footer-links {
+            display: flex;
+            width: 300px;
+            flex-direction: column;
+        }
+
+
+        .footer-bottom-content {
+            display: flex;
+            margin-top: 50px;
+            width: 100%;
+            align-items: center;
+            border-top: 1px solid grey;
+            padding: 10px;
+            flex-direction: column;
+        }
+
+        .footer-copyright {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            text-align: center;
+            width: 70%;
+            flex-direction: column;
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            margin-top: 30px;
+            width: 100%;
+            align-items: center;
+            border-top: 1px solid grey;
+            padding: 10px;
+            flex-direction: column;
+        }
+
+        .footer-icons {
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            text-align: center;
+            width: auto;
+        }
+    }
+</style>
